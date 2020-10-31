@@ -1,0 +1,38 @@
+{
+  "name": "pokemondesk",
+  "version": "1.0.0",
+  "description": "React app with Typescript",
+  "scripts": {
+    "build:dev": "env NODE_ENV=development webpack --config webpack.config.js",
+    "build:prod": "env NODE_ENV=production webpack --config webpack.config.js",
+    "start": "env NODE_ENV=development webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuliaVolkova/PokemonDesk.git"
+  },
+  "author": "Julia Volkova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JuliaVolkova/PokemonDesk/issues"
+  },
+  "homepage": "https://github.com/JuliaVolkova/PokemonDesk#readme",
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "css-loader": "^5.0.0",
+    "html-webpack-plugin": "^4.5.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^10.0.4",
+    "style-loader": "^2.0.0",
+    "ts-loader": "^8.0.7",
+    "typescript": "^4.0.5",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
