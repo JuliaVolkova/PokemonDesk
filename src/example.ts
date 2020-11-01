@@ -7,7 +7,7 @@ concat('Hello ', 'World');
 
 // [ TASK 2 ]
 type ObjectType = {
-    [key:string]: string | Array<string | number>
+    [key: string]: string | Array<string | number>
 }
 
 interface interfaceForTask2 {
@@ -19,18 +19,23 @@ interface interfaceForTask2 {
 }
 
 const MyHometask: interfaceForTask2 = {
-	howIDoIt: "I Do It Wel",
-	someArray: ["string one", "string two", 42],
-	withData: [{ howIDoIt: "I Do It Wel", someArray: ["string one", 23] }],
+    howIDoIt: "I Do It Wel",
+    someArray: ["string one", "string two", 42],
+    withData: [{howIDoIt: "I Do It Wel", someArray: ["string one", 23]}],
 }
 
 // [ TASK 3 ]
-type MyType = {
-    [key:string]: any;
+interface MyKingLionInterface {
+    name: string;
+    type: string
 }
 
 interface MyArray<T> {
-    [N: number]: T;
+    [n: number]: T;
 
-    reduce<U>(fn: (el: T) => U): U[] | MyType;
+    reduce(fn: (accumulator: T, currentValue: T, currentIndex: number, array: T[]) => T): T;
+
+    reduce<U>(fn: (accumulator: U, currentValue: T, currentIndex: number, array: T[]) => U): U;
 }
+
+const myAwesomeArray: MyArray<MyKingLionInterface> = [{name: 'Timon', type: 'meerkat'}, {name: 'Pumbaa', type: 'warthog'}];
