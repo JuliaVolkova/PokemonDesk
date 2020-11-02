@@ -35,7 +35,7 @@ interface MyArray<T> {
 
     reduce(fn: (accumulator: T, currentValue: T, currentIndex: number, array: T[]) => T): T;
 
-    reduce<U>(fn: (accumulator: U, currentValue: T, currentIndex: number, array: T[]) => U): U;
+    reduce<U>(fn: (accumulator: U, currentValue: T, currentIndex: number, array: T[]) => U, init: U): U;
 }
 
 const myAwesomeArray: MyArray<MyKingLionInterface> = [{name: 'Timon', type: 'meerkat'}, {name: 'Pumbaa', type: 'warthog'}];
