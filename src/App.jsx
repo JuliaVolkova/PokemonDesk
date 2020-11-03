@@ -2,11 +2,10 @@ import React from 'react';
 
 import cn from 'classnames';
 import styles from './App.module.scss';
-import './custom.css';
 
 const App = () => {
     return (
-        <div className={cn(styles.header, 'margin')}>Hey-hey!!! This is App Component!</div>
+        <div className={cn(styles.header)}>Hey-hey!!! This is App Component!</div>
     )
 }
 
