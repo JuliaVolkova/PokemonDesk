@@ -1,0 +1,32 @@
+.footer {
+  background: linear-gradient(180deg, #F5DB13 0%, #F2B807 100%);
+  max-height: 60px;
+  min-height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 42px;
+  box-sizing: border-box;
+}
+
+.linksList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.listItem {
+  font-family: Karla, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  color: #212121;
+  list-style: none;
+  -webkit-font-smoothing: antialiased;
+}
