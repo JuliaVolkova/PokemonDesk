@@ -21,14 +21,24 @@
 
 .navItem {
   list-style: none;
+  padding: 0 4px;
+  margin-left: 62px;
+}
+
+.navLink {
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
   font-family: Karla, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
   line-height: 29px;
-
   color: #000000;
-  padding: 0 4px;
-  margin-left: 62px;
-  -webkit-font-smoothing: antialiased;
+}
+
+.navLink:hover,
+.navLink:focus,
+.navLink:active {
+  //color: rgba(33, 33, 33, 0.8)
+  color: #F28F16;
 }
