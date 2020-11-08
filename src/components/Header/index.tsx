@@ -5,7 +5,6 @@ import { NavLink, Link } from 'react-router-dom';
 import { headerLinks } from 'enums/header';
 
 import cn from 'classnames';
-// @ts-ignore
 import logo from 'images/logo.svg';
 import styles from './Header.module.scss';
 

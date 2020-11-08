@@ -31,6 +31,18 @@ module.exports = {
         use: ['ts-loader'],
       },
       {
+        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/',
+            },
+          },
+        ],
+      },
+      {
         test: /\.(png|jpe?g|svg)$/i,
         use: [
           {
