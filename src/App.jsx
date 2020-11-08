@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
+import HomePage from './pages/Home';
 
 import './index.css';
 
@@ -13,16 +14,16 @@ const App = () => {
         <Header />
         <Switch>
           <Route path="/pokédex">
-            <main className="temporary_block">Pokédex</main>
+            <HomePage content='Pokédex'/>
           </Route>
           <Route path="/legendaries">
-            <main className="temporary_block">Legendaries</main>
+            <HomePage content='Legendaries'/>
           </Route>
           <Route path="/documentation">
-            <main className="temporary_block">Documentation</main>
+            <HomePage content='Documentation'/>
           </Route>
           <Route path="/">
-            <main className="temporary_block">Home</main>
+            <HomePage content='Home' />
           </Route>
         </Switch>
         <Footer />
