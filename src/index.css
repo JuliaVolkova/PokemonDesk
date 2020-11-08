@@ -9,19 +9,11 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
+  font-family: Karla, sans-serif;
 }
 
 ul,
 li {
   margin: 0;
   padding: 0;
-}
-
-.temporary_block {
-  height: 100%;
-  width: 100%;
-  font-size: 24px;
-  margin: 42px;
-  display: flex;
-  font-family: Karla, sans-serif;
 }

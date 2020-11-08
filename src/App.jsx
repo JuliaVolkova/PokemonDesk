@@ -14,16 +14,16 @@ const App = () => {
         <Header />
         <Switch>
           <Route path="/pokédex">
-            <HomePage content='Pokédex'/>
+            <HomePage />
           </Route>
           <Route path="/legendaries">
-            <HomePage content='Legendaries'/>
+            <HomePage />
           </Route>
           <Route path="/documentation">
-            <HomePage content='Documentation'/>
+            <HomePage />
           </Route>
           <Route path="/">
-            <HomePage content='Home' />
+            <HomePage />
           </Route>
         </Switch>
         <Footer />
