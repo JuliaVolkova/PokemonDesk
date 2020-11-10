@@ -1,0 +1,16 @@
+@import '../../_variables.scss';
+
+.root {
+  min-height: 100vh;
+  background: linear-gradient(180deg, $third 0%, $primary 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main {
+  //min-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
