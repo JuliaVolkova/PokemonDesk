@@ -1,27 +1,28 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { A, usePath } from 'hookrouter';
 
 // @ts-ignore
-import { headerLinks } from 'enums/header';
+import { GENERAL_MENU } from 'enums/header';
 
 import cn from 'classnames';
 import logo from 'images/logo.svg';
 import styles from './Header.module.scss';
 
 const Header = () => {
+  const path = usePath();
   return (
     <header className={cn(styles.header)}>
       <nav className={cn(styles.navigation)}>
-        <Link to="/">
+        <A href="/">
           <img src={logo} width={180} height={52} alt="Pokemon desk logo" />
-        </Link>
+        </A>
 
         <ul className={cn(styles.navigationList)}>
-          {headerLinks.map((link: { title: string; to: string }) => (
+          {GENERAL_MENU.map((link: { title: string; to: string }) => (
             <li className={cn(styles.navItem)} key={link.title}>
-              <NavLink to={link.to} className={cn(styles.navLink)}>
+              <A href={link.to} className={cn(styles.navLink, {[styles.activeLink]: link.to === path} )}>
                 {link.title}
-              </NavLink>
+              </A>
             </li>
           ))}
         </ul>

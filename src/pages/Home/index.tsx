@@ -1,5 +1,4 @@
 import React from 'react';
-
 import cn from 'classnames';
 
 // @ts-ignore
@@ -11,7 +10,7 @@ import Heading from 'components/Heading';
 
 import styles from './Home.module.scss';
 
-const HomePage = ({ content }: { content: string }) => {
+const HomePage = () => {
   return (
     <>
       <div className={cn(styles.root)}>

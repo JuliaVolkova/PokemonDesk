@@ -10,6 +10,7 @@ module.exports = {
       components: path.resolve(__dirname, 'src/components/'),
       images: path.resolve(__dirname, 'public/images/'),
       enums: path.resolve(__dirname, 'enums/'),
+      pages:path.resolve(__dirname, 'src/pages/')
     },
   },
   mode: NODE_ENV ? NODE_ENV : 'development',
