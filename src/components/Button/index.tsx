@@ -11,9 +11,9 @@ const ButtonDefaultProps = {
 
 interface ButtonProps {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
-  width: number | string
-  theme: string
-  size: string
+  width?: number | string
+  theme?: string
+  size?: string
 }
 
 const getButtonSize = (size: string) => {
