@@ -2,7 +2,7 @@ import React from 'react';
 import { A, usePath } from 'hookrouter';
 
 // @ts-ignore
-import { GENERAL_MENU } from 'enums/header';
+import { GENERAL_MENU,  LinkEnum } from 'enums/header';
 
 import cn from 'classnames';
 import logo from 'images/logo.svg';
@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <header className={cn(styles.header)}>
       <nav className={cn(styles.navigation)}>
-        <A href="/">
+        <A href={LinkEnum.HOME}>
           <img src={logo} width={180} height={52} alt="Pokemon desk logo" />
         </A>
 

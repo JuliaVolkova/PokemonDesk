@@ -1,13 +1,15 @@
 import React from 'react';
 
+// @ts-ignore
+import { ThemeEnum } from 'enums/themes';
+
 import cn from 'classnames';
 import styles from './Button.module.scss';
 
 const ButtonDefaultProps = {
   width: 230,
-  theme: '#73D677',
-  size: 'medium'
-}
+  size: 'medium',
+};
 
 interface ButtonProps {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
@@ -36,8 +38,8 @@ const Button: React.FC<ButtonProps> = ({
                                          children,
                                          onClick,
                                          width = 230,
-                                         theme = '#73D677',
-                                         size = 'medium'
+                                         theme = ThemeEnum.$green,
+                                         size = 'medium',
                                        }) => {
   return (
     <button

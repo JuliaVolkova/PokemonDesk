@@ -6,32 +6,39 @@ import PokedexPage from 'pages/Pokedex';
 // @ts-ignore
 import EmptyPage from 'pages/EmptyPage';
 
-interface headerLinkObject {
+export enum LinkEnum {
+  HOME = '/',
+  POKEDEX = '/pokedex',
+  LEGENDARIES = '/legendaries',
+  DOCUMENTATION = '/documentation'
+}
+
+interface IGeneralMenu {
   title: string;
-  to: string;
+  to: LinkEnum;
   component: () => JSX.Element;
 }
 
 // @ts-ignore
-export const GENERAL_MENU: Array<headerLinkObject> = [
+export const GENERAL_MENU: Array<IGeneralMenu> = [
   {
     title: 'Home',
-    to: '/',
+    to: LinkEnum.HOME,
     component: () => <HomePage />
   },
   {
     title: 'Pokedex',
-    to: '/pokedex',
+    to: LinkEnum.POKEDEX,
     component: () => <PokedexPage />
   },
   {
     title: 'Legendaries',
-    to: '/legendaries',
+    to: LinkEnum.LEGENDARIES,
     component: () => <EmptyPage/>
   },
   {
     title: 'Documentation',
-    to: '/documentation',
+    to: LinkEnum.DOCUMENTATION,
     component: () => <EmptyPage/>
   },
 ];

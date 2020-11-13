@@ -69,6 +69,20 @@
 }
 
 .activeLink {
-  color: $second;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 1px;
+    width: 100%;
+    opacity: 1;
+    background: $dark;
+    border: 1px solid $dark;
+    border-radius: 6px;
+    transition: opacity, width ease-in-out 0.25s;
+  }
 }
 
