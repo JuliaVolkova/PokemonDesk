@@ -12,7 +12,7 @@ import { Pokemon, PokemonsData } from './types';
 const API_URL = 'http://zar.hosthot.ru/api/v1/pokemons';
 
 const usePokemons = () => {
-  const [pokemonsData, setPokemonsData] = useState([]);
+  const [pokemonsData, setPokemonsData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
@@ -45,7 +45,7 @@ const PokedexPage = () => {
     pokemonsData,
     isLoading,
     isError,
-  }: { isLoading: boolean, isError: boolean } = usePokemons();
+  }: { pokemonsData: PokemonsData, isLoading: boolean, isError: boolean } = usePokemons();
 
   if (isLoading) {
     return <div>Loading</div>;
