@@ -1,7 +1,5 @@
 import React from 'react';
-
 import cn from 'classnames';
-import styles from './Home.module.scss';
 
 // @ts-ignore
 import Button from 'components/Button';
@@ -10,23 +8,25 @@ import Parallax from 'components/Parallax';
 // @ts-ignore
 import Heading from 'components/Heading';
 
-const HomePage = ({ content }: { content: string }) => {
+import styles from './Home.module.scss';
+
+const HomePage = () => {
   return (
     <>
       <div className={cn(styles.root)}>
         <main className={cn(styles.main)}>
           <div>
-            <div style={{maxWidth: 450}}>
-              <Heading size='xl' title='Find all your favorite Pokemon'/>
+            <div style={{ maxWidth: 450, margin: '0 42px' }}>
+              <Heading size='xl' title='Find all your favorite Pokemon' />
+              <Button
+                children='See pokemons'
+                onClick={() => console.log('Click!!')}
+                width={230}
+                size='large'
+              />
             </div>
-            <Button
-              children='See pokemons'
-              onClick={() => console.log('Click!!')}
-              width={230}
-              size='large'
-            />
           </div>
-          <Parallax/>
+          <Parallax />
         </main>
       </div>
     </>

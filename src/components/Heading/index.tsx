@@ -6,6 +6,7 @@ import styles from './Heading.module.scss';
 interface HeadingProps {
  size: string
  title: string
+ className?: any
 }
 
 const getHeadingSize = (size: string, title: string) => {
