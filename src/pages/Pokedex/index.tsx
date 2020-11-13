@@ -3,31 +3,49 @@ import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 // @ts-ignore
 import PokemonCard from 'components/PokemonCard';
+// @ts-ignore
+import Heading from 'components/Heading';
 import styles from './Pokedex.module.scss';
 
-import Heading from '../../components/Heading';
+import { Pokemon, PokemonsData } from './types';
 
 const API_URL = 'http://zar.hosthot.ru/api/v1/pokemons';
 
-const PokedexPage = () => {
-  const [totalPokemons, setTotalPokemons] = useState(0);
-  const [pokemons, setPokemons] = useState([]);
+const usePokemons = () => {
+  const [pokemonsData, setPokemonsData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
-    fetch(API_URL)
-      .then((res) => res.json())
-      .then((data) => {
-        setTotalPokemons(data.total);
-        setPokemons(data.pokemons);
-      })
-      .catch(() => {
+    const getPokemons = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+
+        setPokemonsData(data);
+      } catch (error) {
         setIsError(true);
-      })
-      .finally(() => setIsLoading(false));
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    getPokemons();
   }, []);
+
+  return {
+    pokemonsData,
+    isLoading,
+    isError,
+  };
+};
+
+const PokedexPage = () => {
+  const {
+    pokemonsData,
+    isLoading,
+    isError,
+  }: { isLoading: boolean, isError: boolean } = usePokemons();
 
   if (isLoading) {
     return <div>Loading</div>;
@@ -38,9 +56,9 @@ const PokedexPage = () => {
   }
 
   return <main className={cn(styles.root)}>
-    <Heading size='l' title={`${totalPokemons} Pokemons for you to choose your favorite`} />
+    <Heading size='l' title={`${pokemonsData.total} Pokemons for you to choose your favorite`} />
     <section className={cn(styles.content)}>
-      {pokemons.map((pokemon: {name: string}) => <PokemonCard data={pokemon} key={pokemon.name} />)}
+      {pokemonsData.pokemons.map((pokemon: Pokemon) => <PokemonCard data={pokemon} key={pokemon.name} />)}
     </section>
   </main>;
 };
