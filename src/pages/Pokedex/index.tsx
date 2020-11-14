@@ -12,7 +12,13 @@ import { Pokemon, PokemonsData } from './types';
 const API_URL = 'http://zar.hosthot.ru/api/v1/pokemons';
 
 const usePokemons = () => {
-  const [pokemonsData, setPokemonsData] = useState({});
+  const [pokemonsData, setPokemonsData] = useState<PokemonsData>({
+    total: 0,
+    offset: 0,
+    count: 0,
+    limit: 0,
+    pokemons: [],
+  });
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
