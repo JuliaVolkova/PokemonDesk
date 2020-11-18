@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 
 import cn from 'classnames';
 // @ts-ignore
@@ -12,12 +12,22 @@ import { Pokemon, PokemonsData } from './types';
 import useData from 'hook/getData';
 
 const PokedexPage = () => {
+  const [searchValue, setSearchValue] = useState('');
+
+  const query = useMemo(() => ({
+    name: searchValue,
+  }), [searchValue]);
+
   // FIXME: fix type
   const {
     data,
     isLoading,
     isError,
-  }: { data: PokemonsData, isLoading: boolean, isError: boolean } | null = useData('getPokemons');
+  }: { data: PokemonsData | null, isLoading: boolean, isError: boolean } = useData('getPokemons', query);
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
+  };
 
   if (isLoading) {
     return <div>Loading</div>;
@@ -28,9 +38,12 @@ const PokedexPage = () => {
   }
 
   return <main className={cn(styles.root)}>
-    <Heading size='l' title={`${data.total} Pokemons for you to choose your favorite`} />
+    <Heading size='l' title={!isLoading && `${data.total} Pokemons for you to choose your favorite`} />
+    <div>
+      <input type="text" value={searchValue} onChange={handleSearchChange} />
+    </div>
     <section className={cn(styles.content)}>
-      {data.pokemons.map((pokemon: Pokemon) => <PokemonCard data={pokemon} key={pokemon.name} />)}
+      {!isLoading && data.pokemons.map((pokemon: Pokemon) => <PokemonCard data={pokemon} key={pokemon.name} />)}
     </section>
   </main>;
 };
