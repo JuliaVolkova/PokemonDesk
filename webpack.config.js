@@ -8,6 +8,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     alias: {
       components: path.resolve(__dirname, 'src/components/'),
+      config: path.resolve(__dirname, 'src/config/'),
       images: path.resolve(__dirname, 'public/images/'),
       enums: path.resolve(__dirname, 'enums/'),
       pages:path.resolve(__dirname, 'src/pages/')

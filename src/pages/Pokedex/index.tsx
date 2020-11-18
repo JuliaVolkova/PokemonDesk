@@ -5,11 +5,13 @@ import cn from 'classnames';
 import PokemonCard from 'components/PokemonCard';
 // @ts-ignore
 import Heading from 'components/Heading';
+// @ts-ignore
+import config from 'config/index';
 import styles from './Pokedex.module.scss';
 
 import { Pokemon, PokemonsData } from './types';
 
-const API_URL = 'http://zar.hosthot.ru/api/v1/pokemons';
+const API_URL = `${config.client.server.protocol}://${config.client.server.host}${config.client.endpoint.getPokemons.uri.pathname}`;
 
 const usePokemons = () => {
   const [pokemonsData, setPokemonsData] = useState<PokemonsData>({
