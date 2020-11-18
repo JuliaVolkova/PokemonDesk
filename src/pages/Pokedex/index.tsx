@@ -5,13 +5,11 @@ import cn from 'classnames';
 import PokemonCard from 'components/PokemonCard';
 // @ts-ignore
 import Heading from 'components/Heading';
-// @ts-ignore
-import config from 'config/index';
 import styles from './Pokedex.module.scss';
 
 import { Pokemon, PokemonsData } from './types';
-
-const API_URL = `${config.client.server.protocol}://${config.client.server.host}${config.client.endpoint.getPokemons.uri.pathname}`;
+// @ts-ignore
+import req from 'utils/request';
 
 const usePokemons = () => {
   const [pokemonsData, setPokemonsData] = useState<PokemonsData>({
@@ -28,10 +26,10 @@ const usePokemons = () => {
     const getPokemons = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
+        const result = await req('getPokemons');
+        // const data = await response.json();
 
-        setPokemonsData(data);
+        setPokemonsData(result);
       } catch (error) {
         setIsError(true);
       } finally {

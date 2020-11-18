@@ -9,6 +9,7 @@ module.exports = {
     alias: {
       components: path.resolve(__dirname, 'src/components/'),
       config: path.resolve(__dirname, 'src/config/'),
+      utils: path.resolve(__dirname, 'src/utils/'),
       images: path.resolve(__dirname, 'public/images/'),
       enums: path.resolve(__dirname, 'enums/'),
       pages:path.resolve(__dirname, 'src/pages/')
