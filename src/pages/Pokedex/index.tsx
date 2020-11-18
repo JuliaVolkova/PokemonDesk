@@ -13,20 +13,21 @@ import useData from 'hook/getData';
 
 const PokedexPage = () => {
   const [searchValue, setSearchValue] = useState('');
-
-  const query = useMemo(() => ({
-    name: searchValue,
-  }), [searchValue]);
+  const [query, setQuery] = useState({});
 
   // FIXME: fix type
   const {
     data,
     isLoading,
     isError,
-  }: { data: PokemonsData | null, isLoading: boolean, isError: boolean } = useData('getPokemons', query);
+  }: { data: PokemonsData | null, isLoading: boolean, isError: boolean } = useData('getPokemons', query, [searchValue]);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
+    setQuery((s) => ({
+      ...s,
+      name: event.target.value,
+    }));
   };
 
   if (isLoading) {
