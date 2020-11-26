@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
+// @ts-ignore
+import useData from 'hook/getData';
 import cn from 'classnames';
 // @ts-ignore
 import PokemonCard from 'components/PokemonCard';
@@ -9,49 +11,24 @@ import styles from './Pokedex.module.scss';
 
 import { Pokemon, PokemonsData } from './types';
 
-const API_URL = 'http://zar.hosthot.ru/api/v1/pokemons';
-
-const usePokemons = () => {
-  const [pokemonsData, setPokemonsData] = useState<PokemonsData>({
-    total: 0,
-    offset: 0,
-    count: 0,
-    limit: 0,
-    pokemons: [],
-  });
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    const getPokemons = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
-
-        setPokemonsData(data);
-      } catch (error) {
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    getPokemons();
-  }, []);
-
-  return {
-    pokemonsData,
-    isLoading,
-    isError,
-  };
-};
-
 const PokedexPage = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const [query, setQuery] = useState({});
+
+  // FIXME: fix type
   const {
-    pokemonsData,
+    data,
     isLoading,
     isError,
-  }: { pokemonsData: PokemonsData, isLoading: boolean, isError: boolean } = usePokemons();
+  }: { data: PokemonsData | null, isLoading: boolean, isError: boolean } = useData('getPokemons', query, [searchValue]);
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
+    setQuery((s) => ({
+      ...s,
+      name: event.target.value,
+    }));
+  };
 
   if (isLoading) {
     return <div>Loading</div>;
@@ -62,9 +39,10 @@ const PokedexPage = () => {
   }
 
   return <main className={cn(styles.root)}>
-    <Heading size='l' title={`${pokemonsData.total} Pokemons for you to choose your favorite`} />
+    <Heading size='l' title={`${data?.total || 0} Pokemons for you to choose your favorite`} />
+    <input type="text" value={searchValue} onChange={handleSearchChange} className={cn(styles.input)} />
     <section className={cn(styles.content)}>
-      {pokemonsData.pokemons.map((pokemon: Pokemon) => <PokemonCard data={pokemon} key={pokemon.name} />)}
+      {!isLoading && data?.pokemons.map((pokemon: Pokemon) => <PokemonCard data={pokemon} key={pokemon.name} />)}
     </section>
   </main>;
 };
