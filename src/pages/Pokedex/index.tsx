@@ -9,6 +9,8 @@ import cn from 'classnames';
 import PokemonCard from 'components/PokemonCard';
 // @ts-ignore
 import Heading from 'components/Heading';
+// @ts-ignore
+import Loader from 'components/Loader';
 import { IQuery } from '../../interface/query';
 import styles from './Pokedex.module.scss';
 
@@ -18,9 +20,8 @@ const PokedexPage = () => {
   const [searchValue, setSearchValue] = useState('');
   const [query, setQuery] = useState<IQuery>({});
 
-  const debouncedValue = useDebounce(searchValue, 300)
+  const debouncedValue = useDebounce(searchValue, 300);
 
-  // FIXME: fix type
   const {
     data,
     isLoading,
@@ -35,19 +36,17 @@ const PokedexPage = () => {
     }));
   };
 
-  if (isLoading) {
-    return <div>Loading</div>;
-  }
-
   if (isError) {
     return <div>Something went wrong! :(</div>;
   }
 
   return <main className={cn(styles.root)}>
-    <Heading size='l' title={`${data?.total || 0} Pokemons for you to choose your favorite`} />
+    <Heading size='l' title={`${isLoading ? 0 : data?.total} Pokemons for you to choose your favorite`} />
     <input type="text" value={searchValue} onChange={handleSearchChange} className={cn(styles.input)} />
     <section className={cn(styles.content)}>
-      {!isLoading && data?.pokemons.map((pokemon: Pokemon) => <PokemonCard data={pokemon} key={pokemon.name} />)}
+      {isLoading
+        ? <Loader />
+        : data?.pokemons.map((pokemon: Pokemon) => <PokemonCard data={pokemon} key={pokemon.name} />)}
     </section>
   </main>;
 };
