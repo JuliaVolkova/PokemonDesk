@@ -6,7 +6,7 @@ import PokedexPage from 'pages/Pokedex';
 // @ts-ignore
 import EmptyPage from 'pages/EmptyPage';
 // @ts-ignore
-import Pokemon, { PokemonProps } from 'pages/Pokemon';
+import PokemonPage, { PokemonProps } from 'pages/Pokemon';
 
 export enum LinkEnum {
   HOME = '/',
@@ -50,7 +50,7 @@ const SECOND_ROUTES: Array<IGeneralMenu> = [
   {
     title: 'Pokemon',
     to: LinkEnum.POKEMON,
-    component: ({ id }: PokemonProps) => <Pokemon id={id} />,
+    component: ({ id }: PokemonProps) => <PokemonPage id={id} />,
   },
 ];
 
