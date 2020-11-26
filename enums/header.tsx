@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 // @ts-ignore
 import HomePage from 'pages/Home';
 // @ts-ignore
 import PokedexPage from 'pages/Pokedex';
 // @ts-ignore
 import EmptyPage from 'pages/EmptyPage';
+// @ts-ignore
+import Pokemon, { PokemonProps } from 'pages/Pokemon';
 
 export enum LinkEnum {
   HOME = '/',
   POKEDEX = '/pokedex',
   LEGENDARIES = '/legendaries',
-  DOCUMENTATION = '/documentation'
+  DOCUMENTATION = '/documentation',
+  POKEMON = '/pokedex/:id'
 }
 
 interface IGeneralMenu {
   title: string;
   to: LinkEnum;
-  component: () => JSX.Element;
+  component: (props: PropsWithChildren<any>) => JSX.Element;
 }
 
 // @ts-ignore
@@ -24,30 +27,35 @@ export const GENERAL_MENU: Array<IGeneralMenu> = [
   {
     title: 'Home',
     to: LinkEnum.HOME,
-    component: () => <HomePage />
+    component: () => <HomePage />,
   },
   {
     title: 'Pokedex',
     to: LinkEnum.POKEDEX,
-    component: () => <PokedexPage />
+    component: () => <PokedexPage />,
   },
   {
     title: 'Legendaries',
     to: LinkEnum.LEGENDARIES,
-    component: () => <EmptyPage/>
+    component: () => <EmptyPage />,
   },
   {
     title: 'Documentation',
     to: LinkEnum.DOCUMENTATION,
-    component: () => <EmptyPage/>
+    component: () => <EmptyPage />,
   },
 ];
 
-GENERAL_MENU.reduce((acc, item) => ({...acc, [item.to]: item.component}), {});
+const SECOND_ROUTES: Array<IGeneralMenu> = [
+  {
+    title: 'Pokemon',
+    to: LinkEnum.POKEMON,
+    component: ({ id }: PokemonProps) => <Pokemon id={id} />,
+  },
+];
 
-export const routes = {
-  '/': () => <HomePage/>,
-  '/pokedex': () => <PokedexPage/>,
-  '/documentation': () => <EmptyPage/>,
-  '/legendaries': () => <EmptyPage/>,
-}
+export const routes = [...GENERAL_MENU, ...SECOND_ROUTES].reduce((acc, item) => ({
+  ...acc,
+  [item.to]: item.component,
+}), {});
+
