@@ -2,30 +2,35 @@ import React, { useState } from 'react';
 
 // @ts-ignore
 import useData from 'hook/getData';
+// @ts-ignore
+import useDebounce from 'hook/useDebounce';
 import cn from 'classnames';
 // @ts-ignore
 import PokemonCard from 'components/PokemonCard';
 // @ts-ignore
 import Heading from 'components/Heading';
+import { IQuery } from '../../interface/query';
 import styles from './Pokedex.module.scss';
 
 import { Pokemon, PokemonsData } from './types';
 
 const PokedexPage = () => {
   const [searchValue, setSearchValue] = useState('');
-  const [query, setQuery] = useState({});
+  const [query, setQuery] = useState<IQuery>({});
+
+  const debouncedValue = useDebounce(searchValue, 300)
 
   // FIXME: fix type
   const {
     data,
     isLoading,
     isError,
-  }: { data: PokemonsData | null, isLoading: boolean, isError: boolean } = useData('getPokemons', query, [searchValue]);
+  }: { data: PokemonsData | null, isLoading: boolean, isError: boolean } = useData('getPokemons', query, [debouncedValue]);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
-    setQuery((s) => ({
-      ...s,
+    setQuery((state) => ({
+      ...state,
       name: event.target.value,
     }));
   };
