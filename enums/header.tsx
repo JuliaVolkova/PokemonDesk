@@ -46,7 +46,7 @@ export const GENERAL_MENU: Array<IGeneralMenu> = [
   },
 ];
 
-const SECOND_ROUTES: Array<IGeneralMenu> = [
+export const SECONDARY_ROUTES: Array<IGeneralMenu> = [
   {
     title: 'Pokemon',
     to: LinkEnum.POKEMON,
@@ -54,7 +54,7 @@ const SECOND_ROUTES: Array<IGeneralMenu> = [
   },
 ];
 
-export const routes = [...GENERAL_MENU, ...SECOND_ROUTES].reduce((acc, item) => ({
+export const routes = [...GENERAL_MENU, ...SECONDARY_ROUTES].reduce((acc, item) => ({
   ...acc,
   [item.to]: item.component,
 }), {});

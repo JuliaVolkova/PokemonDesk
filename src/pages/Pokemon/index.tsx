@@ -18,7 +18,7 @@ const PokemonPage: FC<PokemonProps> = ({ id }) => {
   return (<>
     {isLoading
       ? <Loader />
-      : <div>This pokemon id equal {data?.name}</div>}
+      : <div style={{minHeight: '100vh'}}>This pokemon id equal {data?.name}</div>}
   </>);
 };
 

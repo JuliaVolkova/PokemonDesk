@@ -46,7 +46,9 @@ const PokedexPage = () => {
     <section className={cn(styles.content)}>
       {isLoading
         ? <Loader />
-        : data?.pokemons.map((pokemon: Pokemon) => <PokemonCard data={pokemon} key={pokemon.name} />)}
+        : data?.pokemons.map((pokemon: Pokemon) =>
+          <PokemonCard data={pokemon} key={pokemon.name} />
+        )}
     </section>
   </main>;
 };
