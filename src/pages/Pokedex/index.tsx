@@ -1,5 +1,7 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 
+// @ts-ignore
+import useData from 'hook/getData';
 import cn from 'classnames';
 // @ts-ignore
 import PokemonCard from 'components/PokemonCard';
@@ -8,8 +10,6 @@ import Heading from 'components/Heading';
 import styles from './Pokedex.module.scss';
 
 import { Pokemon, PokemonsData } from './types';
-// @ts-ignore
-import useData from 'hook/getData';
 
 const PokedexPage = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -39,12 +39,10 @@ const PokedexPage = () => {
   }
 
   return <main className={cn(styles.root)}>
-    <Heading size='l' title={!isLoading && `${data.total} Pokemons for you to choose your favorite`} />
-    <div>
-      <input type="text" value={searchValue} onChange={handleSearchChange} />
-    </div>
+    <Heading size='l' title={`${data?.total || 0} Pokemons for you to choose your favorite`} />
+    <input type="text" value={searchValue} onChange={handleSearchChange} className={cn(styles.input)} />
     <section className={cn(styles.content)}>
-      {!isLoading && data.pokemons.map((pokemon: Pokemon) => <PokemonCard data={pokemon} key={pokemon.name} />)}
+      {!isLoading && data?.pokemons.map((pokemon: Pokemon) => <PokemonCard data={pokemon} key={pokemon.name} />)}
     </section>
   </main>;
 };
