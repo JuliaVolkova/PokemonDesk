@@ -5,11 +5,8 @@ import { navigate } from 'hookrouter';
 // @ts-ignore
 import { LinkEnum } from 'enums/header';
 
-// @ts-ignore
 import Button from 'components/Button';
-// @ts-ignore
 import Parallax from 'components/Parallax';
-// @ts-ignore
 import Heading from 'components/Heading';
 
 import styles from './Home.module.scss';

@@ -1,11 +1,7 @@
 import React, { PropsWithChildren } from 'react';
-// @ts-ignore
 import HomePage from 'pages/Home';
-// @ts-ignore
 import PokedexPage from 'pages/Pokedex';
-// @ts-ignore
 import EmptyPage from 'pages/EmptyPage';
-// @ts-ignore
 import PokemonPage, { PokemonProps } from 'pages/Pokemon';
 
 export enum LinkEnum {

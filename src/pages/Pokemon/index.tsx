@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
-// @ts-ignore
+
 import Loader from 'components/Loader';
-// @ts-ignore
 import useData from 'hook/getData';
 import { Pokemon } from '../Pokedex/types';
 

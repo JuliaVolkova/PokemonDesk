@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 
-// @ts-ignore
 import useData from 'hook/getData';
-// @ts-ignore
 import useDebounce from 'hook/useDebounce';
 import cn from 'classnames';
-// @ts-ignore
 import PokemonCard from 'components/PokemonCard';
-// @ts-ignore
 import Heading from 'components/Heading';
-// @ts-ignore
 import Loader from 'components/Loader';
 import { IQuery } from '../../interface/query';
 import styles from './Pokedex.module.scss';
