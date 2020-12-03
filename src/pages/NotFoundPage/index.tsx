@@ -7,7 +7,6 @@ import cn from 'classnames';
 import { LinkEnum } from 'enums/header';
 // @ts-ignore
 import { ThemeEnum } from 'enums/themes';
-// @ts-ignore
 import Button from 'components/Button';
 import rocketTeamImage from 'images/teamRocket.png';
 import styles from './NotFoundPage.module.scss';

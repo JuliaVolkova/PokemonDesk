@@ -1,3 +1,5 @@
+@import '../../_variables.scss';
+
 .root {
   display: flex;
   flex-direction: column;
@@ -27,6 +29,6 @@
 
   &:focus,
   &:focus-within {
-    border: 1px solid lightgray;
+    border: 1px solid $third;
   }
 }
